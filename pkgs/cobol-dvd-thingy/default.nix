@@ -9,6 +9,8 @@ stdenv.mkDerivation rec {
   pname   = "cobol-dvd-thingy";
   version = "0.1.0";
 
+  # The latest version (0.1.0) has build errors, which were fixed in this
+  # commit.
   src = fetchFromGitHub {
     owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
     repo  = "COBOL-DVD-Thingy";
