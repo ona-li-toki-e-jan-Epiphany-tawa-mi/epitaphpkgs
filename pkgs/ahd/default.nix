@@ -25,8 +25,8 @@ stdenv.mkDerivation rec {
     runHook postCheck
   '';
 
-  nativeBuildInputs = [ cbqn ];
-  installPhase      = ''
+  buildInputs  = [ cbqn ];
+  installPhase = ''
     runHook preInstall
 
     mkdir -p "$out/bin"
