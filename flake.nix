@@ -11,7 +11,7 @@
         });
     in {
       packages = forAllSystems ({ pkgs, ... }:
-        pkgs.callPackage ./default.nix {});
+        import ./default.nix { inherit pkgs; });
 
       legacyPackages = self.packages;
     };
