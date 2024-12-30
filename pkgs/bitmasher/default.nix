@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description =
-      "	A fast-paced text adventure game inside a ransomware-infected computer";
+      "A fast-paced text adventure game inside a ransomware-infected computer";
     homepage =
       "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/BitMasher";
     license     = licenses.gpl3Plus;
