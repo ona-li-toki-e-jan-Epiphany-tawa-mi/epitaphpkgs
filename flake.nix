@@ -9,20 +9,18 @@
         forAllSystems = f: genAttrs systems.flakeExposed (system: f {
           pkgs = import nixpkgs { inherit system; };
         });
-
-        overlay = final: prev: {
-          epitaphpkgs = self.packages.${prev.system};
-        };
     in {
       packages = forAllSystems ({ pkgs, ... }:
         import ./default.nix { inherit pkgs; });
 
       legacyPackages = self.packages;
 
-      overlays.default = overlay;
+      overlays.default = final: prev: {
+        epitaphpkgs = self.packages.${prev.system};
+      };
 
       nixosModules.default = {
-        nixpkgs.overlays = overlay;
+        nixpkgs.overlays = [ self.overlays.default ];
       };
     };
 }
