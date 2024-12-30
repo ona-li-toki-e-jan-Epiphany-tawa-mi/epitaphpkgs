@@ -15,11 +15,11 @@ stdenv.mkDerivation rec {
   };
 
   buildPhase = ''
-    runHook preCheck
+    runHook preBuild
 
     EXTRA_CFLAGS='-O3' ./build.sh
 
-    runHook postCheck
+    runHook postBuild
   '';
 
   installPhase = ''
