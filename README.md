@@ -108,6 +108,6 @@ flake.nix:
 {
   # Here, we include the ahd package from the overlay we previously added in
   # flake.nix and add it to the environment
-  environment.systemPackages = with pkgs.epitaphpkgs [ ahd ];
+  environment.systemPackages = with pkgs.epitaphpkgs; [ ahd ];
 }
 ```
