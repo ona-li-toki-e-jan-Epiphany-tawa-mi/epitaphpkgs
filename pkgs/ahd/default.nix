@@ -15,18 +15,18 @@ stdenv.mkDerivation rec {
     hash  = "sha256-wbVPoyizJ1Mf2op7jS6GQD4Rqfkq0HiF3/c2UJlYmzE=";
   };
 
-  nativeBuildInputs = [ cbqn ];
-  buildInputs       = [ cbqn ];
-
-  buildPhase = ''
-    runHook preBuild
+  doCheck     = true;
+  checkInputs = [ cbqn ];
+  checkPhase  = ''
+    runHook preCheck
 
     bqn test.bqn
 
-    runHook postBuild
+    runHook postCheck
   '';
 
-  installPhase = ''
+  nativeBuildInputs = [ cbqn ];
+  installPhase      = ''
     runHook preInstall
 
     mkdir -p "$out/bin"
