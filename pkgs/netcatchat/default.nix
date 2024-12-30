@@ -40,7 +40,8 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "A simple command-line chat server and client using netcat";
-    homepage    = "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/netcatchat";
+    homepage    =
+      "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/netcatchat";
     license     = licenses.mit;
     mainProgram = pname;
   };
