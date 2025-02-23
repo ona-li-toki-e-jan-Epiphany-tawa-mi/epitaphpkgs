@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 ona-li-toki-e-jan-Epiphany-tawa-mi
+# Copyright (c) 2024-2025 ona-li-toki-e-jan-Epiphany-tawa-mi
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,13 @@ let sourceFile = "netcatchat.sh";
 in
 stdenv.mkDerivation rec {
   pname   = "netcatchat";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = fetchFromGitHub {
     owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
     repo  = "netcatchat";
-    rev   = "RELEASE-V${version}";
-    hash  = "sha256-ST706XwdEUlcwXX9xtONkhzlFANybRgJxBVZdVnWoIo=";
+    rev   = version;
+    hash  = "sha256-man7YE1CPkVdMh0aPRaQ939JoiyCSSY5EIYygBfqNJc=";
   };
 
   doCheck     = true;
@@ -63,7 +63,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "A simple command-line chat server and client using netcat";
     homepage    = "https://paltepuk.xyz/cgit/netcatchat.git/about";
-    license     = licenses.mit;
+    license     = licenses.gpl3Plus;
     mainProgram = pname;
   };
 }
