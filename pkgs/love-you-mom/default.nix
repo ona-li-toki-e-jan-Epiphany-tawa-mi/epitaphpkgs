@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 ona-li-toki-e-jan-Epiphany-tawa-mi
+# Copyright (c) 2024-2025 ona-li-toki-e-jan-Epiphany-tawa-mi
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 { stdenv
-, fetchFromGitHub
+, fetchgit
 , lib
 , zig_0_13
 }:
@@ -30,11 +30,10 @@ stdenv.mkDerivation rec {
   pname   = "love-you-mom";
   version = "0.1.0";
 
-  src = fetchFromGitHub {
-    owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
-    repo  = "love-you-mom";
-    rev   = version;
-    hash  = "sha256-XRPi0FEkjaUVYOXbYjhwf0acANiLZ5pybQiFnpV09m4=";
+  src = fetchgit {
+    url  = "https://paltepuk.xyz/cgit/love-you-mom.git";
+    rev  = version;
+    hash = "sha256-XRPi0FEkjaUVYOXbYjhwf0acANiLZ5pybQiFnpV09m4=";
   };
 
   nativeBuildInputs = [ zig_0_13.hook ];

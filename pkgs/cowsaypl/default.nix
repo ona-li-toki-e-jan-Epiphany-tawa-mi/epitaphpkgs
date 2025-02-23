@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 ona-li-toki-e-jan-Epiphany-tawa-mi
+# Copyright (c) 2024-2025 ona-li-toki-e-jan-Epiphany-tawa-mi
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 { stdenv
-, fetchFromGitHub
+, fetchgit
 , lib
 , gnuapl
 }:
@@ -30,11 +30,10 @@ stdenv.mkDerivation rec {
   pname   = "cowsaypl";
   version = "1.2.3";
 
-  src = fetchFromGitHub {
-    owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
-    repo  = "cowsAyPL";
-    rev   = "RELEASE-V${version}";
-    hash  = "sha256-KUSFKXIUFh9Qu0lyqfHJI26DDkPeRw5gkXYC56UClYo=";
+  src = fetchgit {
+    url  = "https://paltepuk.xyz/cgit/cowsAyPL.git";
+    rev  = "RELEASE-V${version}";
+    hash = "sha256-KUSFKXIUFh9Qu0lyqfHJI26DDkPeRw5gkXYC56UClYo=";
   };
 
   doCheck     = true;

@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 ona-li-toki-e-jan-Epiphany-tawa-mi
+# Copyright (c) 2024-2025 ona-li-toki-e-jan-Epiphany-tawa-mi
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 { stdenv
-, fetchFromGitHub
+, fetchgit
 , lib
 }:
 
@@ -29,11 +29,10 @@ stdenv.mkDerivation rec {
   pname   = "bitmasher";
   version = "7.5385325985";
 
-  src = fetchFromGitHub {
-    owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
-    repo  = "BitMasher";
-    rev   = "RELEASE-V${version}";
-    hash  = "sha256-2bE0QA82yQLa2A8snnhXu8DptDOsnfF/g2bg6SrNwCY=";
+  src = fetchgit {
+    url  = "https://paltepuk.xyz/cgit/BitMasher.git";
+    rev  = "RELEASE-V${version}";
+    hash = "sha256-2bE0QA82yQLa2A8snnhXu8DptDOsnfF/g2bg6SrNwCY=";
   };
 
   buildPhase = ''

@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 { stdenv
-, fetchFromGitHub
+, fetchgit
 , lib
 , netcat-openbsd
 , shellcheck
@@ -33,11 +33,10 @@ stdenv.mkDerivation rec {
   pname   = "netcatchat";
   version = "1.1.0";
 
-  src = fetchFromGitHub {
-    owner = "ona-li-toki-e-jan-Epiphany-tawa-mi";
-    repo  = "netcatchat";
-    rev   = version;
-    hash  = "sha256-man7YE1CPkVdMh0aPRaQ939JoiyCSSY5EIYygBfqNJc=";
+  src = fetchgit {
+    url  = "https://paltepuk.xyz/cgit/netcatchat.git";
+    rev  = version;
+    hash = "sha256-man7YE1CPkVdMh0aPRaQ939JoiyCSSY5EIYygBfqNJc=";
   };
 
   doCheck     = true;
