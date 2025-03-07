@@ -26,14 +26,15 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = { nixpkgs, self, ... }:
-    let inherit (nixpkgs.lib) genAttrs systems;
+    let
+      inherit (nixpkgs.lib) genAttrs systems;
 
-        forAllSystems = f: genAttrs systems.flakeExposed (system: f {
-          pkgs = import nixpkgs { inherit system; };
-        });
+      forAllSystems = f:
+        genAttrs systems.flakeExposed
+        (system: f { pkgs = import nixpkgs { inherit system; }; });
     in {
-      packages = forAllSystems ({ pkgs, ... }:
-        import ./default.nix { inherit pkgs; });
+      packages =
+        forAllSystems ({ pkgs, ... }: import ./default.nix { inherit pkgs; });
       formatter = forAllSystems ({ pkgs }: pkgs.nixfmt-classic);
 
       legacyPackages = self.packages;
@@ -42,8 +43,6 @@
         epitaphpkgs = self.packages.${prev.system};
       };
 
-      nixosModules.default = {
-        nixpkgs.overlays = [ self.overlays.default ];
-      };
+      nixosModules.default = { nixpkgs.overlays = [ self.overlays.default ]; };
     };
 }

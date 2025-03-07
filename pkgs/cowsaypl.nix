@@ -20,25 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-{ stdenv
-, fetchgit
-, lib
-, gnuapl
-}:
+{ stdenv, fetchgit, lib, gnuapl }:
 
 stdenv.mkDerivation rec {
-  pname   = "cowsaypl";
+  pname = "cowsaypl";
   version = "2.0.0";
 
   src = fetchgit {
-    url  = "https://paltepuk.xyz/cgit/cowsAyPL.git";
-    rev  = version;
+    url = "https://paltepuk.xyz/cgit/cowsAyPL.git";
+    rev = version;
     hash = "sha256-FkKkChXtnMNPQDhr09/65Wl7eR91XRzN2xM6vdc8CcM=";
   };
 
-  doCheck     = true;
+  doCheck = true;
   checkInputs = [ gnuapl ];
-  checkPhase  = ''
+  checkPhase = ''
     runHook preCheck
 
     apl --script test.apl --
@@ -46,7 +42,7 @@ stdenv.mkDerivation rec {
     runHook postCheck
   '';
 
-  buildInputs  = [ gnuapl ];
+  buildInputs = [ gnuapl ];
   installPhase = ''
     runHook preInstall
 
@@ -64,8 +60,8 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Cowsay in GNU APL";
-    homepage    = "https://paltepuk.xyz/cgit/cowsAyPL.git/about";
-    license     = licenses.gpl3Plus;
+    homepage = "https://paltepuk.xyz/cgit/cowsAyPL.git/about";
+    license = licenses.gpl3Plus;
     mainProgram = pname;
   };
 }
