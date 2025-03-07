@@ -50,10 +50,8 @@ stdenv.mkDerivation rec {
     cp workspaces/fio.apl "$out/lib"
 
     mkdir -p "$out/bin"
-    substituteInPlace cowsay.apl --replace-fail     \
-                      ')COPY_ONCE fio.apl'          \
-                      ")COPY_ONCE $out/lib/fio.apl"
-    cp cowsay.apl "$out/bin/${pname}"
+    substitute cowsay.apl "$out/bin/${pname}" \
+               --replace-fail ')COPY_ONCE fio.apl' ")COPY_ONCE $out/lib/fio.apl"
 
     runHook postInstall
   '';
